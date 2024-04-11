@@ -80,7 +80,7 @@
             return $this->idUsuario;
         }
 
-        function setVenda($idVenda){
+        function setIdVenda($idVenda){
             $this->idVenda = $idVenda;
         }
 
