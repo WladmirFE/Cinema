@@ -375,34 +375,46 @@
                         <div class="card-body">
                             <div class="table-responsive">
 
-                                <div>
-                                    Nome:
-                                    <input type="text" name="nome" id="nome"/>
+                                <form method="POST" action="controle/usuarioControl.php">
 
-                                </div>
+                                    <div>
+                                        Nome:
+                                        <input type="text" name="nome" id="nome" class="form-control mb-2"/>
 
-                                <div>
-                                    Login:
-                                    <input type="text" name="login" id="login"/>
+                                    </div>
 
-                                </div>
+                                    <div>
+                                        Login:
+                                        <input type="text" name="login" id="login" class="form-control mb-2"/>
 
-                                <div>
-                                    E-mail:
-                                    <input type="email" name="email" id="email"/>
+                                    </div>
 
-                                </div>
+                                    <div>
+                                        E-mail:
+                                        <input type="email" name="email" id="email" class="form-control mb-2"/>
 
-                                <div>
-                                    Senha:
-                                    <input type="password" name="senha" id="senha"/>
+                                    </div>
 
-                                </div>
+                                    <div>
+                                        Senha:
+                                        <input type="password" name="senha" id="senha" class="form-control mb-2"/>
 
-                                <div>
-                                    <input type="submit" value="salvar"/>
+                                    </div>
 
-                                </div>
+                                    <div>
+                                        <button type="submit" value="salvar" class="btn btn-success btn-icon-split">
+
+                                            <span class="icon text-white-50">
+                                                <i class="fas fa-save"></i>
+                                            </span>
+
+                                            <span class="text">Salvar</span>
+
+                                        </button>
+
+                                    </div>
+
+                                </form>
 
                             </div>
                         </div>
