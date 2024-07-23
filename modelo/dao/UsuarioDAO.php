@@ -96,13 +96,7 @@ class UsuarioDAO {
         $obj = new Usuario();
         $obj->setId($row['id']);
         $obj->setNome($row['nome']);
-        $obj->setCpf($row['cpf']);
-        $obj->setLogradouro($row['logradouro']);
-        $obj->setNumero($row['numero']);
-        $obj->setBairro($row['bairro']);
-        $obj->setCidade($row['cidade']);
-        $obj->setUf($row['uf']);
-        $obj->setTelefone($row['telefone']);
+        $obj->setLogin($row['login']);
         $obj->setEmail($row['email']);
         $obj->setSenha($row['senha']);
         return $obj;
