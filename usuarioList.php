@@ -320,12 +320,12 @@ if(! isset ($_SESSION['idUsuarioLogado'])){
                                                         <span class='text'>Remover</span>
                                                         </button>
 
-                                                        <button  class='btn btn-warning btn-icon-split'>
+                                                        <a href='./UsuarioAddEdit.php?id=".$item->getId()."'  class='btn btn-warning btn-icon-split'>
                                                         <span class='icon text-white-50'>
                                                         <i class='fas fa-pen'></i>
                                                         </span>
                                                         <span class='text'>Editar</span>
-                                                        </button>
+                                                        </a>
 
 
                                                     </td>
