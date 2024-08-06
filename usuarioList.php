@@ -313,12 +313,13 @@ if(! isset ($_SESSION['idUsuarioLogado'])){
 
                                                     <td>
 
-                                                        <button  class='btn btn-danger btn-icon-split'>
+                                                    
+                                                        <a href='./controle/usuarioControl.php?idDel=".$item->getId()."'  class='btn btn-danger btn-icon-split'>
                                                         <span class='icon text-white-50'>
                                                         <i class='fas fa-trash'></i>
                                                         </span>
                                                         <span class='text'>Remover</span>
-                                                        </button>
+                                                        </a>
 
                                                         <a href='./UsuarioAddEdit.php?id=".$item->getId()."'  class='btn btn-warning btn-icon-split'>
                                                         <span class='icon text-white-50'>
