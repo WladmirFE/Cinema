@@ -13,7 +13,7 @@ class ClienteDAO {
 
     public static function getInstance() {
         if (!isset(self::$instance))
-            self::$instance = new ClinteDAO();
+            self::$instance = new ClienteDAO();
 
         return self::$instance;
     }

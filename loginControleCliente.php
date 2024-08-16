@@ -13,11 +13,11 @@ if (isset($_POST['email']) && isset($_POST['senha'])){
     if(count($listaCliente)>0){
 
         session_start();
-        $_SESSION['idClienteLogado'] = $listaCliente[0]->getId();
-        header("Location: ./clienteList.php");
+        $_SESSION['idUsuarioLogado'] = $listaUsuario[0]->getId();
+        header("Location: ./usuarioList.php");
 
     }else{
-        header("Location: ./loginCliente.php?erro=1");
+        header("Location: ./login.php?erro=1");
     
     }
 
