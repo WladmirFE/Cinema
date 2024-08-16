@@ -47,7 +47,7 @@
 <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCliente"
         aria-expanded="true" aria-controls="collapseTwo">
-        <i class="fas fa-fw fa-users"></i>
+        <i class="fas fa-money-bill-wave-alt"></i>
         <span>Clientes</span>
     </a>
     <div id="collapseCliente" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
