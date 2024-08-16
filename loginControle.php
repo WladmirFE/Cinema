@@ -14,7 +14,7 @@ if (isset($_POST['email']) && isset($_POST['senha'])){
 
         session_start();
         $_SESSION['idUsuarioLogado'] = $listaUsuario[0]->getId();
-        header("Location: ./UsuarioList.php");
+        header("Location: ./usuarioList.php");
 
     }else{
         header("Location: ./login.php?erro=1");

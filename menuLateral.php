@@ -28,20 +28,7 @@
 </div>
 
 <!-- Nav Item - Pages Collapse Menu -->
-<li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCavalo"
-        aria-expanded="true" aria-controls="collapseTwo">
-        <i class="fas fa-fw fa-horse"></i>
-        <span>Cavalo</span>
-    </a>
-    <div id="collapseCavalo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="buttons.html">Buttons</a>
-            <a class="collapse-item" href="cards.html">Cards</a>
-        </div>
-    </div>
-</li>
+
 
 <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsuario"
@@ -53,6 +40,20 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="usuarioAddEdit.php">Adicionar</a>
             <a class="collapse-item" href="usuarioList.php">Listar</a>
+        </div>
+    </div>
+</li>
+
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCliente"
+        aria-expanded="true" aria-controls="collapseTwo">
+        <i class="fas fa-fw fa-users"></i>
+        <span>Clientes</span>
+    </a>
+    <div id="collapseCliente" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="clienteAddEdit.php">Adicionar</a>
+            <a class="collapse-item" href="clienteList.php">Listar</a>
         </div>
     </div>
 </li>
