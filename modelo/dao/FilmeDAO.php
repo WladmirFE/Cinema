@@ -1,9 +1,9 @@
 <?php
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/cinema/modelo/dao/BDPDO.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/cinema/modelo/vo/Cliente.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/cinema/modelo/vo/Filme.php';
 
-class ClienteDAO {
+class FilmeDAO {
 
     public static $instance;
 
@@ -13,41 +13,41 @@ class ClienteDAO {
 
     public static function getInstance() {
         if (!isset(self::$instance))
-            self::$instance = new ClienteDAO();
+            self::$instance = new FilmeDAO();
 
         return self::$instance;
     }
 
-    public function insert(Cliente $cliente) {
+    public function insert(Filme $filme) {
         try {
-            $sql = "INSERT INTO cliente (nome, login, email, senha)"
-                    . "VALUES (:nome, :login, :email, :senha)";
-
+            $sql = "INSERT INTO filme (nome, descricao, foto)"
+                    . "VALUES (:nome, :descricao, :foto)";
 
             $p_sql = BDPDO::getInstance()->prepare($sql);
-            $p_sql->bindValue(":nome", $cliente->getNome());
-            $p_sql->bindValue(":login", $cliente->getNome());
-            $p_sql->bindValue(":email", $cliente->getEmail());
-            $p_sql->bindValue(":senha", $cliente->getSenha());
-           
+
+
+            $p_sql->bindValue(":nome", $filme->getNome());
+            $p_sql->bindValue(":descricao", $filme->getDescricao());
+            $p_sql->bindValue(":foto", $filme->getFoto());
+
+
             return $p_sql->execute();
         } catch (Exception $e) {
             print "Erro ao executar a função de salvar" . $e->getMessage();
         }
     }
 
-    public function update($cliente) {
+    public function update($filme) {
         try {
-            $sql = "UPDATE cliente SET nome=:nome, login=:login, email=:email, senha=:senha where id=:id";
+            $sql = "UPDATE filme SET nome=:nome, descricao=:descricao, foto=:foto where id=:id";
 
             $p_sql = BDPDO::getInstance()->prepare($sql);
 
-            $p_sql->bindValue(":nome", $cliente->getNome());
-            $p_sql->bindValue(":login", $cliente->getLogin());
-            $p_sql->bindValue(":email", $cliente->getEmail());
-            $p_sql->bindValue(":senha", ($cliente->getSenha()));
+            $p_sql->bindValue(":nome", $filme->getNome());
+            $p_sql->bindValue(":descricao", $filme->getDescricao());
+            $p_sql->bindValue(":foto", $filme->getFoto());
 
-            $p_sql->bindValue(":id", $cliente->getId());
+            $p_sql->bindValue(":id", $filme->getId());
             return $p_sql->execute();
         } catch (Exception $e) {
             print "Erro ao executar a função de atualizar" . $e->getMessage();
@@ -56,7 +56,7 @@ class ClienteDAO {
 
     public function delete($id) {
         try {
-            $sql = "delete from cliente where id = :id";
+            $sql = "delete from filme where id = :id";
             $p_sql = BDPDO::getInstance()->prepare($sql);
             $p_sql->bindValue(":id", $id);
             return $p_sql->execute();
@@ -67,7 +67,7 @@ class ClienteDAO {
 
     public function getById($id) {
         try {
-            $sql = "SELECT * FROM cliente WHERE id = :id";
+            $sql = "SELECT * FROM filme WHERE id = :id";
             $p_sql = BDPDO::getInstance()->prepare($sql);
             $p_sql->bindValue(":id", $id);
             $p_sql->execute();
@@ -79,18 +79,17 @@ class ClienteDAO {
     }
 
     private function converterLinhaDaBaseDeDadosParaObjeto($row) {
-        $obj = new Cliente();
+        $obj = new Filme();
         $obj->setId($row['id']);
         $obj->setNome($row['nome']);
-        $obj->setLogin($row['login']);
-        $obj->setEmail($row['email']);
-        $obj->setSenha($row['senha']);
+        $obj->setDescricao($row['descricao']);
+        $obj->setFoto($row['foto']);
         return $obj;
     }
 
     public function listAll() {
         try {
-            $sql = "SELECT * FROM cliente ";
+            $sql = "SELECT * FROM filme ";
             $p_sql = BDPDO::getInstance()->prepare($sql);
 
             $p_sql->execute();
@@ -110,7 +109,7 @@ class ClienteDAO {
 
     public function listWhere($restanteDoSQL, $arrayDeParametros, $arrayDeValores) {
         try {
-            $sql = "SELECT * FROM cliente " . $restanteDoSQL;
+            $sql = "SELECT * FROM filme " . $restanteDoSQL;
             $p_sql = BDPDO::getInstance()->prepare($sql);
             for ($i = 0; $i < sizeof($arrayDeParametros); $i++) {
                 $p_sql->bindValue($arrayDeParametros[$i], $arrayDeValores [$i]);

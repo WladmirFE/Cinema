@@ -6,8 +6,6 @@ class Filme{
     private $nome;
     private $descricao;
     private $foto;
-    private $banner;
-    private $duracao;
 
     function toString(){
         return $this->nome;
@@ -38,31 +36,13 @@ class Filme{
     }
 
     function setFoto($foto){
-        $this->Foto = $foto;
+        $this->foto = $foto;
 
     }
 
     function getFoto(){
         return $this->foto;
     }
-
-    function setBanner($banner){
-        $this->banner = $banner;
-    }
-
-    function getBanner(){
-        return $this->banner;
-    }
-
-    function setDuracao($duracao){
-        $this->duracao = $duracao;
-    }
-
-    function getDuracao(){
-        return $this->duracao;
-    }
-
-
 
 }
 
