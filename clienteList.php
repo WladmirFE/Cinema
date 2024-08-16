@@ -1,14 +1,12 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/cinema/modelo/dao/ClienteDAO.php';
-
-$obj = NULL;
-if(isset($_GET['id'])){
-    $obj = ClienteDAO::getInstance()->getById($_GET['id']);
+session_start();
+// bloqueio para não entrar nessa pagina sem estar logado.
+if(! isset ($_SESSION['idCLienteLogado'])){
+    header("Location: login.php");
 }
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -269,59 +267,82 @@ if(isset($_GET['id'])){
 
                     <!-- Page Heading -->
                     
-                   
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Adicionar Cliente</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Listar Cliente</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Nome</th>
+                                            <th>Login</th>
+                                            <th>E-Mail</th>
+                                            <th>Açoes</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Nome</th>
+                                            <th>Login</th>
+                                            <th>E-Mail</th>
+                                            <th>Açoes</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
 
-                                <form method="POST" action="controle/clienteControl.php">
+                                    <?php
+                                        require_once $_SERVER['DOCUMENT_ROOT'] . '/cinema/modelo/dao/ClienteDAO.php';
 
-                                    <input type="hidden" name="id" value="<?php echo $obj == NULL?"0":$obj->getId(); ?>"/>
+                                        $lista = ClienteDAO::getInstance()->listAll();
 
-                                    <div>
-                                        Nome:
-                                        <input type="text" name="nome" id="nome" value="<?php echo $obj == NULL?"":$obj->getNome(); ?>" class="form-control mb-2"/>
+                                        if(sizeof($lista)>0){
+                                            foreach($lista as $item){
+                                                echo "
+                                                
+                                                <tr>
+                                                    <td>".$item->getId()."</td>
+                                                    <td>".$item->getNome()."</td>
+                                                    <td>".$item->getLogin()."</td>
+                                                    <td>".$item->getEmail()."</td>
 
-                                    </div>
+                                                    <td>
 
-                                    <div>
-                                        Login:
-                                        <input type="text" name="login" id="login" value="<?php echo $obj == NULL?"":$obj->getLogin(); ?>" class="form-control mb-2"/>
+                                                    
+                                                        <a href='./controle/clienteControl.php?idDel=".$item->getId()."'  class='btn btn-danger btn-icon-split'>
+                                                        <span class='icon text-white-50'>
+                                                        <i class='fas fa-trash'></i>
+                                                        </span>
+                                                        <span class='text'>Remover</span>
+                                                        </a>
 
-                                    </div>
+                                                        <a href='./ClienteAddEdit.php?id=".$item->getId()."'  class='btn btn-warning btn-icon-split'>
+                                                        <span class='icon text-white-50'>
+                                                        <i class='fas fa-pen'></i>
+                                                        </span>
+                                                        <span class='text'>Editar</span>
+                                                        </a>
 
-                                    <div>
-                                        E-mail:
-                                        <input type="email" name="email" id="email" value="<?php echo $obj == NULL?"":$obj->getEmail(); ?>" class="form-control mb-2"/>
 
-                                    </div>
+                                                    </td>
 
-                                    <div>
-                                        Senha:
-                                        <input type="password" name="senha" id="senha" class="form-control mb-2"/>
+                                                </tr>
+                                                
+                                                ";
+                                            }
+                                        }
 
-                                    </div>
 
-                                    <div>
-                                        <button type="submit" value="salvar" class="btn btn-success btn-icon-split">
+                                    ?>
 
-                                            <span class="icon text-white-50">
-                                                <i class="fas fa-save"></i>
-                                            </span>
-
-                                            <span class="text">Salvar</span>
-
-                                        </button>
-
-                                    </div>
-
-                                </form>
-
+                                        
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
