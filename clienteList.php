@@ -1,11 +1,5 @@
 <?php
 
-session_start();
-// bloqueio para não entrar nessa pagina sem estar logado.
-if(! isset ($_SESSION['idCLienteLogado'])){
-    header("Location: login.php");
-}
-
 ?>
 
 <!DOCTYPE html>
