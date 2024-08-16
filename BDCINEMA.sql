@@ -18,3 +18,14 @@ email VARCHAR(255),
 senha VARCHAR(255)
 );
 
+CREATE TABLE filme(
+id INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR(255),
+descricao VARCHAR(255),
+foto VARCHAR(255),
+banner VARCHAR(255),
+duracao VARCHAR(255)
+);
+
+
+
